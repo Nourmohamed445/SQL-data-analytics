@@ -86,9 +86,10 @@ cte_lifespan_segmentionsn AS(
 SELECT
 	customer_key,
 	total_sales,
-	CASE	WHEN customer_life_span_history >= 12 AND total_sales > 5000 THEN 'VIP Customer'
-			WHEN customer_life_span_history >= 12 AND total_sales <= 5000 THEN 'Regular Customer' 
-			ELSE 'New Customer'
+	CASE	
+		WHEN customer_life_span_history >= 12 AND total_sales > 5000 THEN 'VIP Customer'
+		WHEN customer_life_span_history >= 12 AND total_sales <= 5000 THEN 'Regular Customer' 
+		ELSE 'New Customer'
 	END customer_level
 FROM cte_customer_details
 )
