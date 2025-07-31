@@ -20,10 +20,18 @@ Highlights:
 		- average monthly spend
 ===============================================================================
 */
-WITH cte_basic_query AS(
+-- =============================================================================
+-- Create Report: gold.report_customers
+-- =============================================================================
+IF OBJECT_ID('gold.report_customers', 'V') IS NOT NULL
+    DROP VIEW gold.report_customers;
+GO
+
+CREATE VIEW gold.report_customers AS
 /*---------------------------------------------------------------------------
 1) Base Query: Retrieves core columns from tables
 ---------------------------------------------------------------------------*/
+WITH cte_basic_query AS(
 SELECT 
 	f.order_number,
 	f.product_key,
